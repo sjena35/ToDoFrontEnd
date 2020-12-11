@@ -20,14 +20,14 @@ export class UserList extends Component {
 
     componentDidMount(){
         Axios.get('http://localhost:1337/user').then(response => {
-            console.log(response.data)
-            this.setState({ taskData: response.data })
+        
+            this.setState({ userData: response.data })
         }).catch(error => { console.log("error") })
     }
     
     render() {
 
-        var User=this.state.taskData.map(user => (<tr key={user.id}><td>{user.firstname}</td>
+        var User=this.state.userData.map(user => (<tr key={user.id}><td>{user.firstname}</td>
                     
             <td>{user.lastname}</td>
             <td>{user.email}</td>
@@ -48,10 +48,12 @@ export class UserList extends Component {
                         <th>Email</th>
                         <th>DateOfBirth</th>
                         <th>Gender</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {Task}
+                    {User}
                         </tbody>
                 </table>
 
